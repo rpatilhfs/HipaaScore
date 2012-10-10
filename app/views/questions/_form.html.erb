@@ -1,0 +1,36 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Section</label>
+    <select name="question[sub_section_id]" id="section_id">
+      <option value="0">-----Select----</option>
+      <% if @sub_sections.present? %>
+      <% @sub_sections.each do |sub_section|%>
+      <option value="<%= sub_section.id%>" <% if @question.sub_section_id == sub_section.id %>selected <%end%> ><%= sub_section.display_name%></option>
+      <% end %>
+      <% end %>      
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :question %><br />
+    <%= f.text_area :question %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

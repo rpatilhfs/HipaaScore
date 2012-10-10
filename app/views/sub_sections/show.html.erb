@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Section:</b>
+  <%= @sub_section.section_id %>
+</p>
+
+<p>
+  <b>Sub section name:</b>
+  <%= @sub_section.sub_section_name %>
+</p>
+
+<p>
+  <b>Display name:</b>
+  <%= @sub_section.display_name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @sub_section.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_sub_section_path(@sub_section) %> |
+<%= link_to 'Back', sub_sections_path %>

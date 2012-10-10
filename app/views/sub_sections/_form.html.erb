@@ -1,0 +1,36 @@
+<%= form_for(@sub_section) do |f| %>
+  <% if @sub_section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sub_section.errors.count, "error") %> prohibited this sub_section from being saved:</h2>
+
+      <ul>
+      <% @sub_section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Section</label>
+    <select name="sub_section[section_id]" id="section_id">
+      <option value="0">-----Select----</option>
+      <% if @sections.present? %>
+      <% @sections.each do |section|%>
+      <option value="<%= section.id%>" <% if @sub_section.section_id == section.id %>selected <%end%> ><%= section.display_name%></option>
+      <% end %>
+      <% end %>      
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :sub_section_name %><br />
+    <%= f.text_field :sub_section_name %>
+  </div>
+  <div class="field">
+    <%= f.label :display_name %><br />
+    <%= f.text_field :display_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
